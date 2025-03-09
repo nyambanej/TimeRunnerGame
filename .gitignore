@@ -10,6 +10,7 @@ Builds/
 *.app
 /Packages/packages-lock.json
 /UserSettings/
+.vs/
 .vscode/
 .idea/
 *.csproj
