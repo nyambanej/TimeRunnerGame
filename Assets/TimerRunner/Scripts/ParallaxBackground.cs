@@ -14,14 +14,13 @@ public class ParallaxBackground : MonoBehaviour
 
     void Update()
     {
-        // Move left continuously based on speed
-        float temp = transform.position.x - (speedMultiplier * Time.deltaTime);
-        transform.position = new Vector3(temp, transform.position.y, transform.position.z);
+        // Move left continuously based on speed multiplier
+        transform.position += Vector3.left * speedMultiplier * Time.deltaTime;
 
-        // Reset the position when it moves too far left
+        // Check if the sprite has moved completely off screen and reposition it
         if (transform.position.x < startX - length)
         {
-            transform.position = new Vector3(startX, transform.position.y, transform.position.z);
+            transform.position += new Vector3(length * 2, 0, 0);
         }
     }
 }
