@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -49,6 +51,14 @@ namespace IndieMarc.Platformer
         public float fall_pos_y = -5f;
         public float fall_damage_percent = 0.25f;
 
+        //Variables for Dash mechanic
+        private bool canDash = true;
+        private bool isDashing;
+        private float dashingPower = 14f;
+        private float dashingTime = 0.4f;
+        private float dashingCooldown = 5f;
+        [SerializeField] private TrailRenderer tr;
+
         public UnityAction onDeath;
         public UnityAction onHit;
         public UnityAction onJump;
@@ -83,7 +93,7 @@ namespace IndieMarc.Platformer
         private float hit_timer = 0f;
 
         private static Dictionary<int, PlayerCharacter> character_list = new Dictionary<int, PlayerCharacter>();
-
+        
         void Awake()
         {
             character_list[player_id] = this;
@@ -110,12 +120,15 @@ namespace IndieMarc.Platformer
 
         void Start()
         {
-
+          
         }
 
         //Handle physics
         void FixedUpdate()
         {
+            if (isDashing)
+                return;     
+            
             if (is_dead)
                 return;
 
@@ -124,7 +137,7 @@ namespace IndieMarc.Platformer
             float acceleration = Mathf.Abs(move_input.x) > 0.1f ? move_accel : move_deccel;
             acceleration = !is_grounded ? jump_move_percent * acceleration : acceleration;
             move.x = Mathf.MoveTowards(move.x, desiredSpeed, acceleration * Time.fixedDeltaTime);*/
-            
+
             //Automatically move forward
             move.x = move_max;
             UpdateFacing();
@@ -132,12 +145,17 @@ namespace IndieMarc.Platformer
             UpdateCrouch();
 
             //Move
-            rigid.linearVelocity = new Vector2(0, move.y); ;
+            rigid.linearVelocity = new Vector2(0, move.y); 
         }
+
 
         //Handle render and controls
         void Update()
         {
+            if (isDashing)
+                return;
+            
+
             if (is_dead)
                 return;
 
@@ -159,6 +177,10 @@ namespace IndieMarc.Platformer
                 TakeDamage(max_hp * fall_damage_percent);
                 if (reset_when_fall)
                     Teleport(last_ground_pos);
+            }
+            if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+            {
+                StartCoroutine(Dash());
             }
         }
 
@@ -251,6 +273,22 @@ namespace IndieMarc.Platformer
                 capsule_coll.size = coll_start_h;
                 capsule_coll.offset = coll_start_off;
             }
+        }
+
+        private IEnumerator Dash()
+        {
+            canDash = false;
+            isDashing = true;
+            float originalGravity = rigid.gravityScale;
+            rigid.gravityScale = 0f;
+            rigid.linearVelocity = new Vector2(1 * dashingPower, 0f);
+            tr.emitting = true;
+            yield return new WaitForSeconds(dashingTime);
+            tr.emitting = false;
+            rigid.gravityScale = originalGravity;
+            isDashing = false;
+            yield return new WaitForSeconds(dashingCooldown);
+            canDash = true;
         }
 
         public void Jump(bool force_jump = false)
