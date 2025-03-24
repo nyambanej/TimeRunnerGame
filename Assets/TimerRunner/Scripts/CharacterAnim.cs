@@ -9,41 +9,40 @@ namespace IndieMarc.Platformer
     public class CharacterAnim : MonoBehaviour
     {
         private PlayerCharacter character;
-        private CharacterHoldItem character_item;
         private Animator animator;
 
         void Awake()
         {
             character = GetComponent<PlayerCharacter>();
-            character_item = GetComponent<CharacterHoldItem>();
             animator = GetComponent<Animator>();
 
-            character.onJump += OnJump;
-            character.onCrouch += OnCrouch;
+            // Optional: Setup for future
+            // character.onJump += OnJump;
+            // character.onCrouch += OnCrouch;
         }
 
         void Update()
         {
+            // Only set parameters that actually exist in your Animator
+            float speed = Mathf.Abs(character.move_max);
+            animator.SetFloat("Speed", speed);
 
-            //Anims
-            animator.SetBool("Jumping", character.IsJumping());
-            animator.SetBool("InAir", !character.IsGrounded());
-            animator.SetBool("Crouching", character.IsCrouching());
-            animator.SetFloat("Speed", Mathf.Abs(character.move_max));
-            if (character_item != null)
-                animator.SetBool("Hold", character_item.GetHeldItem() != null);
-
+            // For later:
+            // animator.SetBool("Jumping", character.IsJumping());
+            // animator.SetBool("InAir", !character.IsGrounded());
+            // animator.SetBool("Crouching", character.IsCrouching());
+            // animator.SetBool("Hold", character_item?.GetHeldItem() != null);
         }
 
-        void OnCrouch()
-        {
-            animator.SetTrigger("Crouch");
-        }
+        // For future use
+        // void OnCrouch()
+        // {
+        //     animator.SetTrigger("Crouch");
+        // }
 
-        void OnJump()
-        {
-            animator.SetTrigger("Jump");
-        }
+        // void OnJump()
+        // {
+        //     animator.SetTrigger("Jump");
+        // }
     }
-
 }

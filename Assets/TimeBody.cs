@@ -12,7 +12,7 @@ public class TimeBody : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        positions = new List<Vector2>();    
+        positions = new List<Vector2>();
     }
 
     // Update is called once per frame

@@ -137,10 +137,10 @@ TextureImporter:
       name: KaiMercer_0
       rect:
         serializedVersion: 2
-        x: 33
-        y: 413
-        width: 118
-        height: 336
+        x: 13
+        y: 414
+        width: 242
+        height: 334
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,10 +159,10 @@ TextureImporter:
       name: KaiMercer_1
       rect:
         serializedVersion: 2
-        x: 182
-        y: 413
-        width: 194
-        height: 342
+        x: 276
+        y: 412
+        width: 235
+        height: 336
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,10 +181,10 @@ TextureImporter:
       name: KaiMercer_2
       rect:
         serializedVersion: 2
-        x: 390
-        y: 413
-        width: 247
-        height: 330
+        x: 531
+        y: 410
+        width: 134
+        height: 336
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,10 +203,10 @@ TextureImporter:
       name: KaiMercer_3
       rect:
         serializedVersion: 2
-        x: 651
-        y: 413
-        width: 242
-        height: 337
+        x: 685
+        y: 410
+        width: 199
+        height: 336
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,9 +225,9 @@ TextureImporter:
       name: KaiMercer_4
       rect:
         serializedVersion: 2
-        x: 924
-        y: 413
-        width: 217
+        x: 905
+        y: 412
+        width: 271
         height: 336
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -247,10 +247,10 @@ TextureImporter:
       name: KaiMercer_5
       rect:
         serializedVersion: 2
-        x: 1155
-        y: 413
-        width: 138
-        height: 342
+        x: 1208
+        y: 412
+        width: 227
+        height: 334
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -269,10 +269,10 @@ TextureImporter:
       name: KaiMercer_6
       rect:
         serializedVersion: 2
-        x: 1344
-        y: 413
-        width: 199
-        height: 342
+        x: 1491
+        y: 410
+        width: 117
+        height: 336
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,10 +291,10 @@ TextureImporter:
       name: KaiMercer_7
       rect:
         serializedVersion: 2
-        x: 1557
+        x: 1641
         y: 413
-        width: 263
-        height: 330
+        width: 194
+        height: 336
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -322,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      KaiMercer_0: 4852228815135946910
+      KaiMercer_1: 6016344229465016731
+      KaiMercer_2: 4804254297196052822
+      KaiMercer_3: 5310659424612171046
+      KaiMercer_4: 1161875300428006886
+      KaiMercer_5: -6781988394824057976
+      KaiMercer_6: 1453293336369799391
+      KaiMercer_7: 8001490159189611956
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
