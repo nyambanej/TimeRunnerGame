@@ -2,40 +2,80 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public GameObject[] obstaclePrefabs; // Array to hold obstacle types
-    public float spawnRate = 2f; // Time between spawns
-    public float minY = -2f; // Lowest possible spawn height
-    public float maxY = 2f;  // Highest possible spawn height
-    public float moveSpeed = 5f; // Speed of obstacles moving left
+    public GameObject[] obstaclePrefabs;
+    public float spawnRate = 2f;
+    public float minY = -2f;
+    public float maxY = 2f;
+    public float moveSpeed = 5f;
+
+    private bool isRewinding = false;
+    private float nextSpawnTime;
+    private MoveLeft[] moveLeftScripts;
 
     void Start()
     {
-        // Start spawning obstacles at set intervals
         InvokeRepeating(nameof(SpawnObstacle), 1f, spawnRate);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            StartRewind();
+        }
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            StopRewind();
+        }
+    }
+
+    void StartRewind()
+    {
+        isRewinding = true;
+
+        // Reverse movement direction of all existing obstacles
+        moveLeftScripts = FindObjectsByType<MoveLeft>(FindObjectsSortMode.None);
+        foreach (MoveLeft script in moveLeftScripts)
+        {
+            script.speed *= -1;
+        }
+
+        // Stop new obstacles from spawning
+        CancelInvoke(nameof(SpawnObstacle));
+    }
+
+    void StopRewind()
+    {
+        isRewinding = false;
+
+        // Restore movement direction of all obstacles
+        moveLeftScripts = FindObjectsByType<MoveLeft>(FindObjectsSortMode.None);
+        foreach (MoveLeft script in moveLeftScripts)
+        {
+            script.speed = Mathf.Abs(script.speed); // Ensure positive value
+        }
+
+        // Resume spawning
+        InvokeRepeating(nameof(SpawnObstacle), 0f, spawnRate);
     }
 
     void SpawnObstacle()
     {
-        if (obstaclePrefabs.Length == 0) return; // Ensure obstacles exist
+        if (obstaclePrefabs.Length == 0) return;
 
-        // Choose a random obstacle
         int index = Random.Range(0, obstaclePrefabs.Length);
-        float groundY = -4.1f; // Set this to match your ground height
-        float spawnOffset = 4f; // How far off-screen obstacles should spawn
+        float groundY = -4.1f;
+        float spawnOffset = 4f;
         float spawnX = Camera.main.transform.position.x + (Camera.main.orthographicSize * Camera.main.aspect) + spawnOffset;
         Vector3 spawnPosition = new Vector3(spawnX, groundY, 0);
 
-
-
-        // Instantiate the obstacle
         GameObject obstacle = Instantiate(obstaclePrefabs[index], spawnPosition, Quaternion.identity);
 
-        // Ensure obstacle moves left
         MoveLeft moveScript = obstacle.GetComponent<MoveLeft>();
         if (moveScript == null)
         {
-            moveScript = obstacle.AddComponent<MoveLeft>(); // Add MoveLeft script if missing
+            moveScript = obstacle.AddComponent<MoveLeft>();
         }
-        moveScript.speed = moveSpeed; // Set speed for moving left
+        moveScript.speed = isRewinding ? -moveSpeed : moveSpeed;
     }
 }
