@@ -3,17 +3,14 @@ using UnityEngine;
 public class ParallaxManager : MonoBehaviour
 {
     private ParallaxBackground[] parallaxLayers;
-    private WindLine[] windLines;
-    private bool isRewinding = false;
-
     private WindManager windManager;
+    private bool isRewinding = false;
 
     void Start()
     {
         parallaxLayers = Object.FindObjectsByType<ParallaxBackground>(FindObjectsSortMode.None);
         windManager = FindObjectOfType<WindManager>();
     }
-
 
     void Update()
     {
@@ -31,9 +28,11 @@ public class ParallaxManager : MonoBehaviour
         foreach (ParallaxBackground layer in parallaxLayers)
             layer.StartRewind();
 
-        WindLine[] windLines = Object.FindObjectsByType<WindLine>(FindObjectsSortMode.None);
-        foreach (WindLine wind in windLines)
+        foreach (WindLine wind in Object.FindObjectsByType<WindLine>(FindObjectsSortMode.None))
             wind.StartRewind();
+
+        foreach (PlatformChunk chunk in Object.FindObjectsByType<PlatformChunk>(FindObjectsSortMode.None))
+            chunk.StartRewind();
 
         windManager?.StartRewind();
     }
@@ -46,9 +45,11 @@ public class ParallaxManager : MonoBehaviour
         foreach (ParallaxBackground layer in parallaxLayers)
             layer.StopRewind();
 
-        WindLine[] windLines = Object.FindObjectsByType<WindLine>(FindObjectsSortMode.None);
-        foreach (WindLine wind in windLines)
+        foreach (WindLine wind in Object.FindObjectsByType<WindLine>(FindObjectsSortMode.None))
             wind.StopRewind();
+
+        foreach (PlatformChunk chunk in Object.FindObjectsByType<PlatformChunk>(FindObjectsSortMode.None))
+            chunk.StopRewind();
 
         windManager?.StopRewind();
     }
