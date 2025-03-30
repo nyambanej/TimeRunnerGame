@@ -1034,9 +1034,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefabs:
-  - {fileID: 1085520708055090, guid: 271c5b2bc5e704099a0d360ecaf9e121, type: 3}
-  - {fileID: 1085520708055090, guid: c85fed104b84ae84b89ab62990b3ddbf, type: 3}
+  - {fileID: 5061388212548919481, guid: 3e269aa14dffca34291910b91c191e35, type: 3}
+  fallingMinePrefab: {fileID: 0}
   spawnRate: 1
+  fallingMineRate: 5
   minY: -2
   maxY: 2
   moveSpeed: 10
