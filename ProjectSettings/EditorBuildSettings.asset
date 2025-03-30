@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/TimerRunner/TitleScene.unity
+    guid: a2cde55d6b8567f4eaa60d61047b40eb
+  - enabled: 1
     path: Assets/TimerRunner/TimeRunner.unity
     guid: 85a72ebc071848746b8ebecda9913ea9
   m_configObjects:
