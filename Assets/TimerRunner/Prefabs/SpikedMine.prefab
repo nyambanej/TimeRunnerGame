@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8284721033122893100}
   - component: {fileID: -4661063014605467755}
   - component: {fileID: -3148551545747960604}
+  - component: {fileID: -3923134122394012608}
   m_Layer: 0
   m_Name: SpikedMine
   m_TagString: Untagged
@@ -153,3 +154,16 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.4975
+--- !u!114 &-3923134122394012608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5061388212548919481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3d4144730b1fd48bd595d93fc3c1d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50

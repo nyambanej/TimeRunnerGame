@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\TimerRunner\Scripts\ParallaxManager.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\TitleScreenManager.cs" />
+    <Compile Include="Assets\playerHealth.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\WindLine.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\CharacterAnim.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\GamePause.cs" />
@@ -81,8 +82,8 @@
     <Compile Include="Assets\TimerRunner\Scripts\PlayerCharacter.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\CarryItem.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\FollowCamera.cs" />
-    <Compile Include="Assets\TimerRunner\Scripts\NewEmptyCSharpScript.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\MapTransition.cs" />
+    <Compile Include="Assets\Damage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
