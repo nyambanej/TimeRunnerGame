@@ -82,6 +82,7 @@
     <Compile Include="Assets\TimerRunner\Scripts\PlayerCharacter.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\CarryItem.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\FollowCamera.cs" />
+    <Compile Include="Assets\TimerRunner\Scripts\NewEmptyCSharpScript.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\MapTransition.cs" />
     <Compile Include="Assets\Damage.cs" />
   </ItemGroup>
