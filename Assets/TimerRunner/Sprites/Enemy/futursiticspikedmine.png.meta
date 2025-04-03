@@ -1,0 +1,494 @@
+fileFormatVersion: 2
+guid: 9a30381dc32794243be70e857a181da1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3472695943160379230
+    second: futursiticspikedmine_0
+  - first:
+      213: 6703065762431238795
+    second: futursiticspikedmine_1
+  - first:
+      213: 1378697387368890355
+    second: futursiticspikedmine_2
+  - first:
+      213: 4896870896297515077
+    second: futursiticspikedmine_3
+  - first:
+      213: 2238625506807333660
+    second: futursiticspikedmine_4
+  - first:
+      213: 1855233559964106582
+    second: futursiticspikedmine_5
+  - first:
+      213: -6625004572996320366
+    second: futursiticspikedmine_6
+  - first:
+      213: 4752124426058365465
+    second: futursiticspikedmine_7
+  - first:
+      213: 6497190864326495596
+    second: futursiticspikedmine_8
+  - first:
+      213: -2882316967892369402
+    second: futursiticspikedmine_9
+  - first:
+      213: 2065941334550380560
+    second: futursiticspikedmine_10
+  - first:
+      213: 7500945437364400126
+    second: futursiticspikedmine_11
+  - first:
+      213: -7654440428440541451
+    second: futursiticspikedmine_12
+  - first:
+      213: 2921917104182414802
+    second: futursiticspikedmine_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1250
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: futursiticspikedmine_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 1019
+        height: 1019
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e57b309af8e713030800000000000000
+      internalID: 3472695943160379230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: futursiticspikedmine_1
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 988
+        width: 84
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b820ccbebc2160d50800000000000000
+      internalID: 6703065762431238795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: futursiticspikedmine_2
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 912
+        width: 13
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ffb1ea18fd122310800000000000000
+      internalID: 1378697387368890355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: futursiticspikedmine_3
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 871
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54813cca22e25f340800000000000000
+      internalID: 4896870896297515077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: futursiticspikedmine_4
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 885
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c134166a902311f10800000000000000
+      internalID: 2238625506807333660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: futursiticspikedmine_5
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 880
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65f3b05e71d1fb910800000000000000
+      internalID: 1855233559964106582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: futursiticspikedmine_6
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 873
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 293473f01714f04a0800000000000000
+      internalID: -6625004572996320366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: futursiticspikedmine_7
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 856
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91a7aa7dcffe2f140800000000000000
+      internalID: 4752124426058365465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: futursiticspikedmine_8
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 255
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6d0812eaa8aa2a50800000000000000
+      internalID: 6497190864326495596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: futursiticspikedmine_9
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 249
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 600c1b62df3fff7d0800000000000000
+      internalID: -2882316967892369402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: futursiticspikedmine_10
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 110
+        width: 13
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0100caca2b2bbac10800000000000000
+      internalID: 2065941334550380560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: futursiticspikedmine_11
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 95
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eff21b13226b81860800000000000000
+      internalID: 7500945437364400126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: futursiticspikedmine_12
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 55
+        width: 28
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f6a96c3cf6f5c590800000000000000
+      internalID: -7654440428440541451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: futursiticspikedmine_13
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 53
+        width: 61
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dd4ee1102cbc8820800000000000000
+      internalID: 2921917104182414802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      futursiticspikedmine_0: 3472695943160379230
+      futursiticspikedmine_1: 6703065762431238795
+      futursiticspikedmine_10: 2065941334550380560
+      futursiticspikedmine_11: 7500945437364400126
+      futursiticspikedmine_12: -7654440428440541451
+      futursiticspikedmine_13: 2921917104182414802
+      futursiticspikedmine_2: 1378697387368890355
+      futursiticspikedmine_3: 4896870896297515077
+      futursiticspikedmine_4: 2238625506807333660
+      futursiticspikedmine_5: 1855233559964106582
+      futursiticspikedmine_6: -6625004572996320366
+      futursiticspikedmine_7: 4752124426058365465
+      futursiticspikedmine_8: 6497190864326495596
+      futursiticspikedmine_9: -2882316967892369402
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
