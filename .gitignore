@@ -1,9 +1,9 @@
-Library/
+/Library/
 Logs/
 Temp/
 obj/
 .DS_Store
-Build/
+/Build/
 Builds/
 *.apk
 *.exe
