@@ -55,6 +55,7 @@
     <UnityVersion>6000.0.41f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.41f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.41f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.41f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
@@ -62,9 +63,10 @@
   <ItemGroup>
     <Compile Include="Assets\TimerRunner\Scripts\ParallaxManager.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\TitleScreenManager.cs" />
-    <Compile Include="Assets\playerHealth.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\WindLine.cs" />
+    <Compile Include="Assets\TimerRunner\Scripts\TimeBody.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\CharacterAnim.cs" />
+    <Compile Include="Assets\TimerRunner\Scripts\GameManagerScript.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\GamePause.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\TheAudio.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\DashGhostEffect.cs" />
@@ -72,20 +74,19 @@
     <Compile Include="Assets\TimerRunner\Scripts\CharacterHoldItem.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\MoveLeft.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\ObstacleSpawner.cs" />
-    <Compile Include="Assets\TimeBody.cs" />
+    <Compile Include="Assets\TimerRunner\Scripts\Damage.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\Lever.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\GroundSpawner.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\PlatformChunk.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\WindManager.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\ParallaxBackground.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\PlayerControls.cs" />
-    <Compile Include="Assets\GameManagerScript.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\PlayerCharacter.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\CarryItem.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\FollowCamera.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\NewEmptyCSharpScript.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\MapTransition.cs" />
-    <Compile Include="Assets\Damage.cs" />
+    <Compile Include="Assets\TimerRunner\Scripts\playerHealth.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

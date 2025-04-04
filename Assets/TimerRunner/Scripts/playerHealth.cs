@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     private bool isDead;
 
     public GameManagerScript gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +24,22 @@ public class PlayerHealth : MonoBehaviour
     {
         healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
 
-        if (health <= 0 && !isDead)
+        // Check if player falls off the screen 
+        if (transform.position.y < -10 && !isDead)
         {
             isDead = true;
             gameManager.gameOver();
             Destroy(gameObject);
         }
 
+        // Existing health check
+        if (health <= 0 && !isDead)
+        {
+            isDead = true;
+            gameManager.gameOver();
+            Destroy(gameObject);
+        }
     }
 }
+
 
