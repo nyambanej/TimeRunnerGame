@@ -1968,6 +1968,7 @@ GameObject:
   - component: {fileID: 546591298}
   - component: {fileID: 546591300}
   - component: {fileID: 546591299}
+  - component: {fileID: 546591301}
   m_Layer: 5
   m_Name: TimeText
   m_TagString: Untagged
@@ -2093,6 +2094,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546591297}
   m_CullTransparentMesh: 1
+--- !u!114 &546591301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546591297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551a910afdedfb740a992b7a71479d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeText: {fileID: 546591299}
 --- !u!1 &608807429 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1262357808126890, guid: 488fef3a70db04a7d975594f7ab7ce56,
@@ -8038,7 +8052,6 @@ GameObject:
   - component: {fileID: 1913263149}
   - component: {fileID: 1913263148}
   - component: {fileID: 1913263150}
-  - component: {fileID: 1913263151}
   m_Layer: 5
   m_Name: TimerBackground
   m_TagString: Untagged
@@ -8118,19 +8131,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeText: {fileID: 546591299}
---- !u!114 &1913263151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1913263146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 551a910afdedfb740a992b7a71479d82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeText: {fileID: 0}
 --- !u!1 &1932075115
 GameObject:
   m_ObjectHideFlags: 0
