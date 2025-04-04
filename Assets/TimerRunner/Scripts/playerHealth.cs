@@ -28,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
         if (transform.position.y < -10 && !isDead)
         {
             isDead = true;
+            Debug.Log("Player fell and died");
             gameManager.gameOver();
             Destroy(gameObject);
         }
