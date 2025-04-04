@@ -10,6 +10,9 @@ namespace IndieMarc.Platformer
     public class PlayerCharacter : MonoBehaviour
     {
         public int player_id;
+        public GameManagerScript gameManager;
+        public TimeSurvivedDisplay timeDisplay;
+
 
         [Header("Stats")]
         public float max_hp = 100f;
@@ -140,8 +143,19 @@ namespace IndieMarc.Platformer
             // If we fell below level
             if (transform.position.y < fall_pos_y && !is_grounded && verticalVelocity < -20f)
             {
-                Teleport(last_ground_pos);
+               //Teleport(last_ground_pos);
+                is_dead = true;
+                Debug.Log("💀 Player fell — stopping timer"); 
+                timeDisplay.StopTimer();         // Stop the timer
+                gameManager.gameOver();          // Show Game Over 
+                gameObject.SetActive(false);     
             }
+
+           
+
+            
+
+
         }
 
         void FixedUpdate()

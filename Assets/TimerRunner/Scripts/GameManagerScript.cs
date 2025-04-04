@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameManagerScript : MonoBehaviour
 {
     public GameObject gameOverUI;
+    public TimeSurvivedDisplay timeDisplay;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +23,11 @@ public class GameManagerScript : MonoBehaviour
     }
 
     public void gameOver()
-    {
-        gameOverUI.SetActive(true);
-    }
+{
+    timeDisplay.StopTimer();     // This stops the timer
+    gameOverUI.SetActive(true);  // This shows the Game Over screen
+}
+
 
     public void mainMenu()
     {

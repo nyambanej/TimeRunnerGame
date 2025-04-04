@@ -11,6 +11,7 @@ public class TimeSurvivedDisplay : MonoBehaviour
     void Update()
     {
         if (!isRunning) return;
+        
 
         timeSurvived += Time.deltaTime;
 
@@ -23,6 +24,7 @@ public class TimeSurvivedDisplay : MonoBehaviour
     public void StopTimer()
     {
         isRunning = false;
+        Debug.Log("✅ StopTimer was called");
     }
 
     public void ResetTimer()

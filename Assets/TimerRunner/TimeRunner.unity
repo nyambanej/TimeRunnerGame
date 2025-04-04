@@ -3312,6 +3312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 152701482}
+  timeDisplay: {fileID: 546591301}
 --- !u!4 &773309701
 Transform:
   m_ObjectHideFlags: 0
@@ -8572,9 +8573,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114086076410299948, guid: 488fef3a70db04a7d975594f7ab7ce56,
         type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 773309700}
+    - target: {fileID: 114086076410299948, guid: 488fef3a70db04a7d975594f7ab7ce56,
+        type: 3}
       propertyPath: ghostEffect
       value: 
       objectReference: {fileID: 608807439}
+    - target: {fileID: 114086076410299948, guid: 488fef3a70db04a7d975594f7ab7ce56,
+        type: 3}
+      propertyPath: timeDisplay
+      value: 
+      objectReference: {fileID: 546591301}
     - target: {fileID: 114086076410299948, guid: 488fef3a70db04a7d975594f7ab7ce56,
         type: 3}
       propertyPath: magnetPullSpeed
@@ -8611,7 +8622,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4852228815135946910, guid: 33a99eaceb828bc469ed5f90777e009d,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8385739660580533327, guid: 488fef3a70db04a7d975594f7ab7ce56, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -8759,7 +8771,6 @@ GameObject:
   - component: {fileID: 1913263147}
   - component: {fileID: 1913263149}
   - component: {fileID: 1913263148}
-  - component: {fileID: 1913263150}
   m_Layer: 5
   m_Name: TimerBackground
   m_TagString: Untagged
@@ -8827,19 +8838,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913263146}
   m_CullTransparentMesh: 1
---- !u!114 &1913263150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1913263146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 551a910afdedfb740a992b7a71479d82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeText: {fileID: 546591299}
 --- !u!1 &1932075115
 GameObject:
   m_ObjectHideFlags: 0
