@@ -169,6 +169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afcb24f678f1504698d95f45f0521f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilesPerLayer: 6
+  speeds: []
+  customSpacings: []
 --- !u!1 &61464466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,14 +1466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056ad1cfbca8b8042a43447225f8cdd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefabs:
-  - {fileID: 5061388212548919481, guid: 3e269aa14dffca34291910b91c191e35, type: 3}
   fallingMinePrefab: {fileID: 0}
-  spawnRate: 1
   fallingMineRate: 5
-  minY: -2
-  maxY: 2
-  moveSpeed: 10
 --- !u!4 &363248915
 Transform:
   m_ObjectHideFlags: 0
@@ -1521,8 +1518,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -350}
-  m_SizeDelta: {x: 150, y: 15}
+  m_AnchoredPosition: {x: 347.35995, y: -54}
+  m_SizeDelta: {x: 666.3988, y: 75.001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &396801915
 MonoBehaviour:
@@ -4999,6 +4996,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afcb24f678f1504698d95f45f0521f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilesPerLayer: 6
+  speeds: []
+  customSpacings: []
 --- !u!1 &1114713030
 GameObject:
   m_ObjectHideFlags: 0
@@ -6492,11 +6492,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74af3cf69dc3cc243830c20061d43194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionTime: 10
+  transitionTime1: 30
   transitionTime2: 70
   glitchDuration: 1
-  oldParallax: {fileID: 2137358845}
-  newParallax: {fileID: 54669843}
+  level1Parallax: {fileID: 0}
+  level2Parallax: {fileID: 0}
+  level3Parallax: {fileID: 0}
   glitchVideoUI: {fileID: 456313739}
   glitchVideo: {fileID: 120959515}
 --- !u!4 &1364287910
@@ -8760,6 +8761,7 @@ MonoBehaviour:
   level_bottom: -5
   level_left: -10
   level_right: 100
+  level_top: 0
 --- !u!1 &1913263146
 GameObject:
   m_ObjectHideFlags: 0
@@ -10774,6 +10776,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afcb24f678f1504698d95f45f0521f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilesPerLayer: 6
+  speeds: []
+  customSpacings: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
