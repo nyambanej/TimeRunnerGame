@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\TimerRunner\Scripts\TitleScreenManager.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\WindLine.cs" />
+    <Compile Include="Assets\TimerRunner\Scripts\MusicSwitcher.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\TimeBody.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\CharacterAnim.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\GameManagerScript.cs" />
