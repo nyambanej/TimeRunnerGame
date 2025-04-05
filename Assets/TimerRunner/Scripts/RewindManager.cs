@@ -47,45 +47,50 @@ public class RewindManager : MonoBehaviour
         rewindTimer = 0f;
         cooldownTimer = rewindCooldown;
 
-        // Freeze player & floors
-        foreach (var platform in FindObjectsOfType<PlatformChunk>())
-            platform.Freeze(true);
+        // Platforms move in reverse direction
+        foreach (var platform in FindObjectsByType<PlatformChunk>(FindObjectsSortMode.None))
+            platform.StartRewind();
 
-        FindObjectOfType<PlayerCharacter>()?.Freeze(true);
-        FindObjectOfType<WindManager>()?.StartRewind();
-        FindObjectOfType<ObstacleSpawner>()?.StartRewind();
-        FindObjectOfType<GroundSpawner>()?.StartRewind();
+        // Player keeps moving
+        FindFirstObjectByType<PlayerCharacter>()?.Freeze(false);
 
-        // Freeze all falling mines
-        foreach (var mine in FindObjectsOfType<FallingMine>())
-            mine.Freeze(true);
+        // Notify managers
+        FindFirstObjectByType<WindManager>()?.StartRewind();
+        FindFirstObjectByType<ObstacleSpawner>()?.StartRewind();
+        FindFirstObjectByType<GroundSpawner>()?.StartRewind();
 
-        // Freeze all floor tiles (MoveLeft-based)
-        foreach (var mover in FindObjectsOfType<MoveLeft>())
-            mover.speed = 0f;
+        // Start rewind for all falling mines
+        foreach (var mine in FindObjectsByType<FallingMine>(FindObjectsSortMode.None))
+            mine.StartRewind();
+
+        // Reverse all objects with MoveLeft
+        foreach (var mover in FindObjectsByType<MoveLeft>(FindObjectsSortMode.None))
+            mover.speed *= -1f;
     }
 
     public void StopRewind()
     {
         isRewinding = false;
 
-        foreach (var platform in FindObjectsOfType<PlatformChunk>())
-            platform.Freeze(false);
+        // Platforms go back to forward direction
+        foreach (var platform in FindObjectsByType<PlatformChunk>(FindObjectsSortMode.None))
+            platform.StopRewind();
 
-        FindObjectOfType<PlayerCharacter>()?.Freeze(false);
-        FindObjectOfType<WindManager>()?.StopRewind();
-        FindObjectOfType<ObstacleSpawner>()?.StopRewind();
-        FindObjectOfType<GroundSpawner>()?.StopRewind();
+        FindFirstObjectByType<PlayerCharacter>()?.Freeze(false);
 
-        foreach (var wind in FindObjectsOfType<WindLine>())
+        FindFirstObjectByType<WindManager>()?.StopRewind();
+        FindFirstObjectByType<ObstacleSpawner>()?.StopRewind();
+        FindFirstObjectByType<GroundSpawner>()?.StopRewind();
+
+        foreach (var wind in FindObjectsByType<WindLine>(FindObjectsSortMode.None))
             Destroy(wind.gameObject);
 
-        foreach (var mine in FindObjectsOfType<FallingMine>())
-            mine.Freeze(false);
+        foreach (var mine in FindObjectsByType<FallingMine>(FindObjectsSortMode.None))
+            mine.StopRewind();
 
-        // Resume movement on all floor tiles (MoveLeft)
-        foreach (var mover in FindObjectsOfType<MoveLeft>())
-            mover.speed = FindObjectOfType<GroundSpawner>()?.environmentSpeed ?? 5f;
+        // Reset MoveLeft direction to positive
+        foreach (var mover in FindObjectsByType<MoveLeft>(FindObjectsSortMode.None))
+            mover.speed = Mathf.Abs(mover.speed);
     }
 
     public static bool IsRewinding() => Instance != null && Instance.isRewinding;

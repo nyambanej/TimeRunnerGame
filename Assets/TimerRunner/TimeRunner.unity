@@ -4921,6 +4921,7 @@ MonoBehaviour:
   chunkSpacing: 15
   environmentSpeed: 5
   transitionBufferTime: 7.5
+  longFloorY: -2
 --- !u!1 &2871606547907385890
 GameObject:
   m_ObjectHideFlags: 0
@@ -6965,7 +6966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallingMinePrefab: {fileID: 5061388212548919481, guid: 3e269aa14dffca34291910b91c191e35,
     type: 3}
-  fallingMineRate: 5
+  fallingMineRate: 4
 --- !u!212 &6017771905035921540
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7737,8 +7738,8 @@ MonoBehaviour:
   level1Parallax: {fileID: 3510024846554036359}
   level2Parallax: {fileID: 4865932080476618582}
   level3Parallax: {fileID: 414295873067614311}
-  glitchVideoUI: {fileID: 0}
-  glitchVideo: {fileID: 0}
+  glitchVideoUI: {fileID: 456313739}
+  glitchVideo: {fileID: 120959515}
 --- !u!4 &7255834962162077325
 Transform:
   m_ObjectHideFlags: 0
@@ -8090,7 +8091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &7638798733144829332
 MonoBehaviour:
   m_ObjectHideFlags: 0

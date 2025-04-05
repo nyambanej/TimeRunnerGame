@@ -7,25 +7,62 @@ public class FallingMine : MonoBehaviour
 
     private bool isFrozen = false;
     private bool hasLanded = false;
+    private bool isRewinding = false;
+
     private Rigidbody2D rb;
+    private Vector3 originalPosition;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        originalPosition = transform.position;
     }
 
     void Update()
     {
+        if (isRewinding)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, originalPosition, fallSpeed * Time.deltaTime);
+            return;
+        }
+
         if (isFrozen || hasLanded)
             return;
 
-        // Fall manually
         transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
     }
+
 
     public void Freeze(bool freeze)
     {
         isFrozen = freeze;
+    }
+
+    public void StartRewind()
+    {
+        isRewinding = true;
+        hasLanded = false;
+        isFrozen = true;
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.simulated = false;
+        }
+
+        transform.SetParent(null); // Detach from platform if parented
+    }
+
+    public void StopRewind()
+    {
+        isRewinding = false;
+        isFrozen = false;
+
+        if (rb != null)
+        {
+            rb.simulated = true;
+            rb.bodyType = RigidbodyType2D.Dynamic;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -38,15 +75,11 @@ public class FallingMine : MonoBehaviour
             {
                 rb.bodyType = RigidbodyType2D.Kinematic;
                 rb.linearVelocity = Vector2.zero;
-                // Don't disable simulation! We want trigger events to still work
-                // rb.simulated = false;
             }
 
-            // Parent to platform
             transform.SetParent(collision.transform);
         }
 
-        // Optional: explode if player is touched while still falling
         if (collision.gameObject.CompareTag("Player"))
         {
             Explode();

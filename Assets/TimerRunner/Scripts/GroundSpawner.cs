@@ -17,13 +17,15 @@ public class GroundSpawner : MonoBehaviour
     private MapTransition transitionManager;
     private bool isRewinding = false;
     private bool isFrozen = false;
+    private bool allowSpawning = true;
+    public float longFloorY = 5f;
 
     private bool spawnedLongFloor1 = false;
     private bool spawnedLongFloor2 = false;
 
     void Start()
     {
-        transitionManager = FindObjectOfType<MapTransition>();
+        transitionManager = FindAnyObjectByType<MapTransition>();
         nextSpawnX = transform.position.x;
         SpawnChunk();
         nextSpawnX += chunkSpacing;
@@ -31,7 +33,7 @@ public class GroundSpawner : MonoBehaviour
 
     void Update()
     {
-        if (isFrozen) return; // 
+        if (isFrozen || !allowSpawning) return;
 
         float movement = environmentSpeed * Time.deltaTime * (isRewinding ? -1 : 1);
         distanceTracker += Mathf.Abs(movement);
@@ -57,7 +59,6 @@ public class GroundSpawner : MonoBehaviour
         if (transitionManager)
         {
             float time = transitionManager.GetElapsedTime();
-
             float transition1 = transitionManager.TransitionTime1;
             float transition2 = transitionManager.TransitionTime2;
 
@@ -85,19 +86,26 @@ public class GroundSpawner : MonoBehaviour
 
     void SpawnLongFloor()
     {
-        float yOffset = 8.5f;
-        Vector3 adjustedSpawnPos = new Vector3(nextSpawnX, spawnY + yOffset, 0f);
+        Vector3 adjustedSpawnPos = new Vector3(nextSpawnX, longFloorY, 0f);
         Instantiate(longFloorPrefab, adjustedSpawnPos, Quaternion.identity);
     }
+
 
     public void StartRewind()
     {
         isRewinding = true;
+        allowSpawning = false;
     }
 
     public void StopRewind()
     {
         isRewinding = false;
+        Invoke(nameof(EnableSpawning), 1.5f);
+    }
+
+    private void EnableSpawning()
+    {
+        allowSpawning = true;
     }
 
     public void Freeze(bool freeze)

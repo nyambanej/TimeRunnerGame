@@ -6,43 +6,47 @@ public class ObstacleSpawner : MonoBehaviour
     public GameObject fallingMinePrefab;
 
     [Header("Spawn Settings")]
-    public float fallingMineRate = 5f; // How frequently mines spawn
+    public float fallingMineRate = 5f;
 
-    // We'll not track isRewinding here, as RewindManager handles it globally
+    private bool isSpawning = true;
 
     void Start()
     {
-        // Start spawning falling mines
         InvokeRepeating(nameof(SpawnFallingMine), 1f, fallingMineRate);
     }
 
-    // Called by RewindManager when rewind begins
     public void StartRewind()
     {
-        // Stop spawning new falling mines
         CancelInvoke(nameof(SpawnFallingMine));
-
-        // Optionally you could find mines and call StartRewind there, 
-        // but RewindManager already does that.
+        isSpawning = false;
     }
 
-    // Called by RewindManager when rewind ends
     public void StopRewind()
     {
-        // Resume spawning
-        InvokeRepeating(nameof(SpawnFallingMine), 0f, fallingMineRate);
+        // Wait 2 seconds before resuming spawning
+        Invoke(nameof(ResumeSpawning), 2f);
+    }
+
+    private void ResumeSpawning()
+    {
+        if (!isSpawning) // Only resume if it hasn't already resumed
+        {
+            isSpawning = true;
+            InvokeRepeating(nameof(SpawnFallingMine), 0f, fallingMineRate);
+        }
     }
 
     void SpawnFallingMine()
     {
-        if (fallingMinePrefab == null) return;
+        if (!isSpawning || fallingMinePrefab == null)
+            return;
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) return;
 
         float screenHalfWidth = Camera.main.orthographicSize * Camera.main.aspect;
-        float offsetX = 2f; // How far in front of the player the bomb should fall
-        float spawnRange = 1.5f; // Slight variation for randomness
+        float offsetX = 6f;
+        float spawnRange = 0.1f;
 
         float spawnX = player.transform.position.x + offsetX + Random.Range(-spawnRange, spawnRange);
         float spawnY = Camera.main.transform.position.y + Camera.main.orthographicSize + 1f;
@@ -53,5 +57,4 @@ public class ObstacleSpawner : MonoBehaviour
         if (!mine.GetComponent<FallingMine>())
             mine.AddComponent<FallingMine>();
     }
-
 }

@@ -149,11 +149,11 @@ namespace IndieMarc.Platformer
                 StartCoroutine(DoDash());
             }
 
-            // If we fell below level
+            /*
             if (transform.position.y < fall_pos_y && !is_grounded && verticalVelocity < -20f)
             {
                 Teleport(last_ground_pos);
-            }
+            }*/
         }
 
         void FixedUpdate()
