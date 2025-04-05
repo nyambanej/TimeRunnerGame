@@ -1,46 +1,72 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float health;
-    public float maxHealth;
+    public float health = 100f;
+    public float maxHealth = 100f;
     public Image healthBar;
 
-    private bool isDead;
-
+    private bool isDead = false;
     public GameManagerScript gameManager;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        maxHealth = health;
+        health = maxHealth;
+        UpdateHealthBar();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
-
-        // Check if player falls off the screen 
+        // Check if player fell off the map
         if (transform.position.y < -10 && !isDead)
         {
-            isDead = true;
-            Debug.Log("Player fell and died");
-            gameManager.gameOver();
-            Destroy(gameObject);
+            Die("Player fell and died.");
         }
 
-        // Existing health check
+        // Just in case: check for health reaching 0
         if (health <= 0 && !isDead)
         {
-            isDead = true;
-            gameManager.gameOver();
-            Destroy(gameObject);
+            Die("Player is dead.");
         }
     }
+
+    public void TakeDamage(float amount)
+    {
+        if (isDead) return;
+
+        health -= amount;
+        health = Mathf.Clamp(health, 0f, maxHealth);
+        UpdateHealthBar();
+
+        if (health <= 0)
+        {
+            Die("Player is dead.");
+        }
+    }
+
+    private void UpdateHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = Mathf.Clamp01(health / maxHealth);
+        }
+    }
+
+    private void Die(string reason)
+    {
+        isDead = true;
+        Debug.Log(reason);
+
+        if (gameManager != null)
+        {
+            gameManager.gameOver();
+        }
+        else
+        {
+            Debug.LogWarning("GameManager not assigned.");
+        }
+
+        Destroy(gameObject);
+    }
 }
-
-

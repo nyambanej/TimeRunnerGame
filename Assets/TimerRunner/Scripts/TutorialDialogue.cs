@@ -13,7 +13,6 @@ public class TutorialDialogue : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.DeleteKey("HasPlayed");
         if (!PlayerPrefs.HasKey("HasPlayed"))
         {
             panel.SetActive(true);
