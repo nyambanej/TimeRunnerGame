@@ -67,6 +67,7 @@
     <Compile Include="Assets\TimerRunner\Scripts\GameManagerScript.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\GamePause.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\TheAudio.cs" />
+    <Compile Include="Assets\TimerRunner\Scripts\TutorialDialogue.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\DashGhostEffect.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\TimeSurvivedDisplay.cs" />
     <Compile Include="Assets\TimerRunner\Scripts\CharacterHoldItem.cs" />
