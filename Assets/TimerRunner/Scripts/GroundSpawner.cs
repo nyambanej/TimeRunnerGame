@@ -15,6 +15,8 @@ public class GroundSpawner : MonoBehaviour
     private float distanceTracker = 0f;
     private float nextSpawnX;
     private MapTransition transitionManager;
+    private bool isRewinding = false;
+    private bool isFrozen = false;
 
     private bool spawnedLongFloor1 = false;
     private bool spawnedLongFloor2 = false;
@@ -29,13 +31,16 @@ public class GroundSpawner : MonoBehaviour
 
     void Update()
     {
-        distanceTracker += environmentSpeed * Time.deltaTime;
+        if (isFrozen) return; // 
+
+        float movement = environmentSpeed * Time.deltaTime * (isRewinding ? -1 : 1);
+        distanceTracker += Mathf.Abs(movement);
 
         if (distanceTracker >= chunkSpacing)
         {
             distanceTracker = 0f;
             SpawnChunk();
-            nextSpawnX += chunkSpacing;
+            nextSpawnX += movement;
         }
     }
 
@@ -53,8 +58,8 @@ public class GroundSpawner : MonoBehaviour
         {
             float time = transitionManager.GetElapsedTime();
 
-            float transition1 = transitionManager.transitionTime;
-            float transition2 = transitionManager.transitionTime2; // Add this to your MapTransition script
+            float transition1 = transitionManager.TransitionTime1;
+            float transition2 = transitionManager.TransitionTime2;
 
             bool nearFirst = time >= (transition1 - transitionBufferTime) && time <= (transition1 + transitionBufferTime);
             bool nearSecond = time >= (transition2 - transitionBufferTime) && time <= (transition2 + transitionBufferTime);
@@ -74,7 +79,6 @@ public class GroundSpawner : MonoBehaviour
             }
         }
 
-        // Default: spawn normal chunk
         GameObject prefab = groundChunks[Random.Range(0, groundChunks.Length)];
         Instantiate(prefab, spawnPos, Quaternion.identity);
     }
@@ -84,5 +88,20 @@ public class GroundSpawner : MonoBehaviour
         float yOffset = 8.5f;
         Vector3 adjustedSpawnPos = new Vector3(nextSpawnX, spawnY + yOffset, 0f);
         Instantiate(longFloorPrefab, adjustedSpawnPos, Quaternion.identity);
+    }
+
+    public void StartRewind()
+    {
+        isRewinding = true;
+    }
+
+    public void StopRewind()
+    {
+        isRewinding = false;
+    }
+
+    public void Freeze(bool freeze)
+    {
+        isFrozen = freeze;
     }
 }

@@ -10,9 +10,6 @@ namespace IndieMarc.Platformer
     public class PlayerCharacter : MonoBehaviour
     {
         public int player_id;
-        public GameManagerScript gameManager;
-        public TimeSurvivedDisplay timeDisplay;
-
 
         [Header("Stats")]
         public float max_hp = 100f;
@@ -86,6 +83,7 @@ namespace IndieMarc.Platformer
         private bool is_jumping = false;
         private bool hasDoubleJumped = false;
         private bool disable_controls = false;
+        private Animator animator;
 
         // --- DASH STATE ---
         private bool isDashing = false;   // Are we in the middle of a dash?
@@ -110,6 +108,7 @@ namespace IndieMarc.Platformer
             start_scale = transform.localScale;
             average_ground_pos = transform.position;
             last_ground_pos = transform.position;
+            animator = GetComponent<Animator>();
             hp = max_hp;
 
             if (dashEffect)
@@ -126,10 +125,20 @@ namespace IndieMarc.Platformer
             if (is_dead)
                 return;
 
-            PlayerControls controls = PlayerControls.Get(player_id);
-            move_input = !disable_controls ? controls.GetMove() : Vector2.zero;
-            jump_press = !disable_controls ? controls.GetJumpDown() : false;
-            jump_hold = !disable_controls ? controls.GetJumpHold() : false;
+            if (frozen)
+            {
+                move_input = Vector2.zero;
+                jump_press = false;
+                jump_hold = false;
+            }
+            else
+            {
+                PlayerControls controls = PlayerControls.Get(player_id);
+                move_input = !disable_controls ? controls.GetMove() : Vector2.zero;
+                jump_press = !disable_controls ? controls.GetJumpDown() : false;
+                jump_hold = !disable_controls ? controls.GetJumpHold() : false;
+            }
+
 
             if (jump_press)
                 Jump();
@@ -143,25 +152,21 @@ namespace IndieMarc.Platformer
             // If we fell below level
             if (transform.position.y < fall_pos_y && !is_grounded && verticalVelocity < -20f)
             {
-               //Teleport(last_ground_pos);
-                is_dead = true;
-                Debug.Log("💀 Player fell — stopping timer"); 
-                timeDisplay.StopTimer();         // Stop the timer
-                gameManager.gameOver();          // Show Game Over 
-                gameObject.SetActive(false);     
+                Teleport(last_ground_pos);
             }
-
-           
-
-            
-
-
         }
 
         void FixedUpdate()
         {
             if (is_dead)
                 return;
+
+            if (frozen)
+            {
+                rigid.linearVelocity = Vector2.zero;
+                return;
+            }
+
 
             // Grounded check
             bool wasGrounded = is_grounded;
@@ -306,6 +311,20 @@ namespace IndieMarc.Platformer
             verticalVelocity = 0f;
             is_jumping = false;
         }
+
+        private bool frozen = false;
+
+        public void Freeze(bool state)
+        {
+            frozen = state;
+            if ((frozen) || (animator != null))
+            {
+                rigid.linearVelocity = Vector2.zero;
+                verticalVelocity = 0f;
+                animator.speed = state ? 0f : 1f;
+            }
+        }
+
 
         public Vector2 GetMove()
         {

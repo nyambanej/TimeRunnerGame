@@ -2,95 +2,56 @@
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public GameObject[] obstaclePrefabs;
-    public GameObject fallingMinePrefab; // ← Add this
+    [Header("Prefabs")]
+    public GameObject fallingMinePrefab;
 
-    public float spawnRate = 2f;
-    public float fallingMineRate = 5f; // ← Add this
-    public float minY = -2f;
-    public float maxY = 2f;
-    public float moveSpeed = 5f;
+    [Header("Spawn Settings")]
+    public float fallingMineRate = 5f; // How frequently mines spawn
 
-    private bool isRewinding = false;
-    private float nextSpawnTime;
-    private MoveLeft[] moveLeftScripts;
+    // We'll not track isRewinding here, as RewindManager handles it globally
 
     void Start()
     {
-        InvokeRepeating(nameof(SpawnObstacle), 1f, spawnRate);
-        InvokeRepeating(nameof(SpawnFallingMine), 1f, fallingMineRate); // ← Add this
+        // Start spawning falling mines
+        InvokeRepeating(nameof(SpawnFallingMine), 1f, fallingMineRate);
     }
 
-    void Update()
+    // Called by RewindManager when rewind begins
+    public void StartRewind()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            StartRewind();
-        }
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            StopRewind();
-        }
+        // Stop spawning new falling mines
+        CancelInvoke(nameof(SpawnFallingMine));
+
+        // Optionally you could find mines and call StartRewind there, 
+        // but RewindManager already does that.
     }
 
-    void StartRewind()
+    // Called by RewindManager when rewind ends
+    public void StopRewind()
     {
-        isRewinding = true;
-
-        moveLeftScripts = FindObjectsByType<MoveLeft>(FindObjectsSortMode.None);
-        foreach (MoveLeft script in moveLeftScripts)
-        {
-            script.speed *= -1;
-        }
-
-        CancelInvoke(nameof(SpawnObstacle));
-        CancelInvoke(nameof(SpawnFallingMine)); // ← Pause falling too
-    }
-
-    void StopRewind()
-    {
-        isRewinding = false;
-
-        moveLeftScripts = FindObjectsByType<MoveLeft>(FindObjectsSortMode.None);
-        foreach (MoveLeft script in moveLeftScripts)
-        {
-            script.speed = Mathf.Abs(script.speed);
-        }
-
-        InvokeRepeating(nameof(SpawnObstacle), 0f, spawnRate);
-        InvokeRepeating(nameof(SpawnFallingMine), 0f, fallingMineRate); // ← Resume falling
-    }
-
-    void SpawnObstacle()
-    {
-        if (obstaclePrefabs.Length == 0) return;
-
-        int index = Random.Range(0, obstaclePrefabs.Length);
-        float groundY = -4.1f;
-        float spawnOffset = 4f;
-        float spawnX = Camera.main.transform.position.x + (Camera.main.orthographicSize * Camera.main.aspect) + spawnOffset;
-        Vector3 spawnPosition = new Vector3(spawnX, groundY, 0);
-
-        GameObject obstacle = Instantiate(obstaclePrefabs[index], spawnPosition, Quaternion.identity);
-
-        MoveLeft moveScript = obstacle.GetComponent<MoveLeft>();
-        if (moveScript == null)
-        {
-            moveScript = obstacle.AddComponent<MoveLeft>();
-        }
-        moveScript.speed = isRewinding ? -moveSpeed : moveSpeed;
+        // Resume spawning
+        InvokeRepeating(nameof(SpawnFallingMine), 0f, fallingMineRate);
     }
 
     void SpawnFallingMine()
     {
         if (fallingMinePrefab == null) return;
 
-        float screenX = Camera.main.transform.position.x;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
+
         float screenHalfWidth = Camera.main.orthographicSize * Camera.main.aspect;
-        float spawnX = Random.Range(screenX - screenHalfWidth, screenX + screenHalfWidth);
+        float offsetX = 2f; // How far in front of the player the bomb should fall
+        float spawnRange = 1.5f; // Slight variation for randomness
+
+        float spawnX = player.transform.position.x + offsetX + Random.Range(-spawnRange, spawnRange);
         float spawnY = Camera.main.transform.position.y + Camera.main.orthographicSize + 1f;
 
         Vector3 spawnPosition = new Vector3(spawnX, spawnY, 0f);
-        Instantiate(fallingMinePrefab, spawnPosition, Quaternion.identity);
+        GameObject mine = Instantiate(fallingMinePrefab, spawnPosition, Quaternion.identity);
+
+        if (!mine.GetComponent<FallingMine>())
+            mine.AddComponent<FallingMine>();
     }
+
 }

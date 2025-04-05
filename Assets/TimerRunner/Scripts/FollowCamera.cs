@@ -21,6 +21,8 @@ namespace IndieMarc.Platformer
         public float level_bottom;
         public float level_left;
         public float level_right;
+        public float level_top;
+
 
         private PlayerCharacter target_character;
         private Camera cam;
@@ -56,7 +58,7 @@ namespace IndieMarc.Platformer
                 float fw = GetFrustrumWidth() / 2f;
                 target_pos.x = Mathf.Max(level_left + fw, target_pos.x);
                 target_pos.x = Mathf.Min(level_right - fw, target_pos.x);
-                target_pos.y = Mathf.Max(level_bottom + fh, target_pos.y);
+                target_pos.y = Mathf.Clamp(target_pos.y, level_bottom + fh, level_top - fh);
 
                 //Check if need to move
                 Vector3 diff = target_pos - transform.position;

@@ -4,77 +4,68 @@ using UnityEngine.Video;
 public class MapTransition : MonoBehaviour
 {
     [Header("Timing")]
-    public float transitionTime = 30f;  // First glitch
-    public float transitionTime2 = 70f; // Second glitch
-    public float glitchDuration = 3f;    // How long the glitch video plays (optional if you want to time it manually)
+    public float transitionTime1 = 30f;
+    public float transitionTime2 = 70f;
+    public float glitchDuration = 3f;
 
     [Header("References")]
-    public GameObject oldParallax;       // Drag your old map object here
-    public GameObject newParallax;       // Drag your new map object here
-    public GameObject glitchVideoUI;     // The RawImage that displays the glitch video
-    public VideoPlayer glitchVideo;      // The VideoPlayer component
+    public GameObject level1Parallax;
+    public GameObject level2Parallax;
+    public GameObject level3Parallax;
+    public GameObject glitchVideoUI;
+    public VideoPlayer glitchVideo;
 
     private float timer = 0f;
-    private bool triggered = false;
+    private int currentStage = 0;
 
     void Start()
     {
-        // Ensure glitch UI is hidden at start
         if (glitchVideoUI) glitchVideoUI.SetActive(false);
-
-        // Make sure new parallax is off initially
-        if (newParallax) newParallax.SetActive(false);
+        if (level1Parallax) level1Parallax.SetActive(true);
+        if (level2Parallax) level2Parallax.SetActive(false);
+        if (level3Parallax) level3Parallax.SetActive(false);
     }
 
     void Update()
     {
-        // If we've already triggered the transition, do nothing
-        if (triggered) return;
-
         timer += Time.deltaTime;
 
-        // Once we reach the transition time, start the glitch effect
-        if (timer >= transitionTime)
+        if (currentStage == 0 && timer >= transitionTime1)
         {
-            triggered = true;
-            StartCoroutine(DoGlitchTransition());
+            currentStage = 1;
+            StartCoroutine(DoGlitchTransition(level1Parallax, level2Parallax));
+        }
+        else if (currentStage == 1 && timer >= transitionTime2)
+        {
+            currentStage = 2;
+            StartCoroutine(DoGlitchTransition(level2Parallax, level3Parallax));
         }
     }
 
-    private System.Collections.IEnumerator DoGlitchTransition()
+    private System.Collections.IEnumerator DoGlitchTransition(GameObject oldParallax, GameObject newParallax)
     {
-        // Show the glitch UI
         if (glitchVideoUI) glitchVideoUI.SetActive(true);
 
-        // Start playing the video
         if (glitchVideo)
         {
             glitchVideo.time = 0f;
             glitchVideo.Play();
         }
 
-        // Option A: Wait a fixed duration
         yield return new WaitForSeconds(glitchDuration);
 
-        // Option B (instead of fixed wait): Wait for video to finish
-        // while (glitchVideo && glitchVideo.isPlaying)
-        // {
-        //     yield return null;
-        // }
-
-        // Hide glitch UI
         if (glitchVideoUI) glitchVideoUI.SetActive(false);
-
-        // Disable old parallax
         if (oldParallax) oldParallax.SetActive(false);
-
-        // Enable new parallax
         if (newParallax) newParallax.SetActive(true);
     }
 
     public bool WillTransitionSoon(float bufferTime = 3f)
     {
-        return !triggered && (transitionTime - timer <= bufferTime);
+        if (currentStage == 0)
+            return transitionTime1 - timer <= bufferTime;
+        else if (currentStage == 1)
+            return transitionTime2 - timer <= bufferTime;
+        return false;
     }
 
     public bool IsTransitionPlaying()
@@ -87,5 +78,6 @@ public class MapTransition : MonoBehaviour
         return timer;
     }
 
-
+    public float TransitionTime1 => transitionTime1;
+    public float TransitionTime2 => transitionTime2;
 }
