@@ -10,6 +10,12 @@ public class GameManagerScript : MonoBehaviour
     public TimeSurvivedDisplay timeDisplay;
     public TextMeshProUGUI finalScoreText;
 
+    public void playAgain()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
+
     public void gameOver()
     {
         timeDisplay.StopTimer();
