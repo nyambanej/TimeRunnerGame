@@ -4,6 +4,7 @@ using TMPro;
 public class TimeSurvivedDisplay : MonoBehaviour
 {
     public TextMeshProUGUI timeText;
+    public float scoreMultiplier = 100f;
 
     private float timeSurvived = 0f;
     private bool isRunning = true;
@@ -11,14 +12,13 @@ public class TimeSurvivedDisplay : MonoBehaviour
     void Update()
     {
         if (!isRunning) return;
-        
 
         timeSurvived += Time.deltaTime;
 
-        int minutes = Mathf.FloorToInt(timeSurvived / 60f);
-        int seconds = Mathf.FloorToInt(timeSurvived % 60f);
-
-        timeText.text = $"{minutes:00}:{seconds:00}";
+        // Score increases every full second
+        int wholeSeconds = Mathf.FloorToInt(timeSurvived);
+        int score = wholeSeconds * Mathf.FloorToInt(scoreMultiplier);
+        timeText.text = $"{score}";
     }
 
     public void StopTimer()
@@ -31,5 +31,15 @@ public class TimeSurvivedDisplay : MonoBehaviour
     {
         timeSurvived = 0f;
         isRunning = true;
+    }
+
+    public int GetScore()
+    {
+        return Mathf.FloorToInt(timeSurvived) * Mathf.FloorToInt(scoreMultiplier);
+    }
+
+    public void SetMultiplier(float newMultiplier)
+    {
+        scoreMultiplier = newMultiplier;
     }
 }
